@@ -2,6 +2,7 @@
 html, body{
 	width: 100vw;
 	height: 100vh;
+	
 }
 
 html {
@@ -10,7 +11,7 @@ html {
 	word-wrap: break-word;
 }
 body {
-    background: var(--color-background);
+    background: #6A73AA;
 	-webkit-font-smoothing: antialiased;
 }
 html, body, div, span, applet, object, iframe,

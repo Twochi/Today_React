@@ -1,4 +1,5 @@
 import style from "./Login.module.css"
+import "../../layouts/Default.css"
 
 function Login() {
 
