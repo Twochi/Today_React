@@ -1,22 +1,18 @@
-import style from "./Login.module.css"
-import "../../layouts/Default.css"
+import style from "./Login.module.css";
+import "../../layouts/Default.css";
 
 function Login() {
+  console.log("완냐");
 
-    console.log("완냐")
-
-    return(
+  return (
     <>
-
-    <div className={style.mainContainer}>
+      <div className={style.mainContainer}>
         <div className={style.loginForm}>
-            <div>회원가입</div>
+          <div>회원가입</div>
         </div>
-    </div>
-
+      </div>
     </>
-    
-    )
+  );
 }
 
 export default Login;
