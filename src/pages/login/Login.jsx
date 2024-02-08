@@ -1,17 +1,26 @@
 import style from "./Login.module.css"
 import "../../layouts/Default.css"
+import loginImg from "./images/loginImg.png"
 
 function Login() {
 
-    console.log("완냐")
+    console.log("ㅎㅇㅎㅇ");
+    
+
 
     return(
     <>
 
     <div className={style.mainContainer}>
         <div className={style.loginForm}>
-            <div>회원가입</div>
+            <div className={style.imageContainer}>
+                
+                <img src={loginImg} alt="이미지 없음" />
+                <input type="text" className={style.textAboveImage}></input>
+
+            </div>
         </div>
+        
     </div>
 
     </>
