@@ -1,18 +1,20 @@
-html,
-body {
-  width: 100vw;
-  height: 100vh;
-}
+/* 기본 폰트 */ 
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
 
+html, body{
+	width: 100vw;
+	height: 100vh;
+	
+}
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
 html {
-  font-family: "Apple SD Gothic Neo", Roboto, "Noto Sans KR", NanumGothic,
-    "Malgun Gothic", sans-serif;
-  line-height: 1.2;
-  word-wrap: break-word;
+	font-family: 'Apple SD Gothic Neo', Roboto, 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;
+	line-height: 1.2;
+	word-wrap: break-word;
 }
 body {
-  background: var(--color-background);
-  -webkit-font-smoothing: antialiased;
+    background: #6A73AA;
+	-webkit-font-smoothing: antialiased;
 }
 html,
 body,
