@@ -1,10 +1,15 @@
-import style from "./Login.module.css"
-import "../../layouts/Default.css"
-import loginImg from "./images/loginImg.png"
+import style from "./Login.module.css";
+import "../../../layouts/Default.css";
+import loginImg from "./images/loginImg.png";
+import { useNavigate } from "react-router-dom/dist";
+
+
 
 function Login() {
 
     console.log("ㅎㅇㅎㅇ");
+
+    const navigate = useNavigate();
 
 
 
@@ -20,7 +25,7 @@ function Login() {
                         <input type="password" className={style.memberPwd} />
 
 
-                        <button className={style.signUpButton}>회원가입</button>
+                        <button className={style.signUpButton} onClick={() => navigate("/signUp")}>회원가입   </button>
 
                         <button className={style.loginButton}>로그인</button>
                     </div>

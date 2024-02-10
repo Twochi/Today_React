@@ -1,0 +1,16 @@
+body {
+  background-color: #7880b2;
+}
+
+.note-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.note-image {
+  width: 80%;
+  height: 80%;
+  margin-bottom: 300px;
+}

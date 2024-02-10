@@ -10,6 +10,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -100px;
+
 }
 
 .loginForm {
@@ -20,6 +22,7 @@ body {
     justify-content: center;
 
     padding: 20px;
+
 }
 
 .memberId {
@@ -71,6 +74,8 @@ body {
     top: 66%;
     left: 44.4%;
 
+    color: gray;
+
     font-family: var(--defulat-font);
     font-size: 15px;
     font-weight: 600
@@ -80,6 +85,8 @@ body {
     position: absolute;
     top: 66%;
     left: 55.8%;
+
+    color: gray;
 
     font-family: var(--defulat-font);
     font-size: 15px;
