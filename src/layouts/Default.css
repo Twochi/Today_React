@@ -1,21 +1,24 @@
-/* 기본 폰트 */ 
+/* 기본 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
 
-html, body{
+html,
+body {
 	width: 100vw;
 	height: 100vh;
-	
+
 }
-@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
 html {
 	font-family: 'Apple SD Gothic Neo', Roboto, 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;
 	line-height: 1.2;
 	word-wrap: break-word;
 }
+
 body {
-    background: #6A73AA;
+	background: #7880B2;
 	-webkit-font-smoothing: antialiased;
 }
+
 html,
 body,
 div,
@@ -97,9 +100,9 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
 * {
@@ -118,8 +121,9 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+	display: block;
 }
+
 div,
 span,
 article,
@@ -136,90 +140,77 @@ label,
 a,
 nav,
 form {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
+
 ol,
 ul,
 li {
-  list-style: none;
+	list-style: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 img {
   max-width: 100%;
   height: auto;
   border: 0;
 }
+
 button {
   border: 0;
   background: transparent;
   cursor: pointer;
 }
+
 a {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--color-black);
+	display: inline-block;
+	text-decoration: none;
+	color: var(--color-black);
 }
 
 main {
-  overflow-y: auto;
+	overflow-y: auto;
 }
 
 /* 색상 기본 */
 :root {
-  --color-hard: #7758fa;
-  --color-middle: #9f8afb;
-  --color-light: #baabfc;
-  --color-black: #000000;
-  --color-admin-middle: #333333;
-  --color-admin-hard: #717171;
-  --color-cancle-button: #a2a3a3;
-  --color-cancle-button-hard: #7f7f7f;
-  --color-text-title: #535353;
-  --color-text-content: #757575;
-  --color-border: #e8e8e8;
-  --color-bg-button: #e3ddfe;
-  --color-background: #f8f8f8;
-  --color-alert: #ff6767;
-  --color-success: #36d99e;
-
-  /* -- fullcalendar Color Overriding -- Start */
-  --fc-button-bg-color: #9f8afb;
-  --fc-button-border-color: #9f8afb;
-  --fc-button-active-bg-color: #7758fa;
-  --fc-button-active-border-color: #7758fa;
-  --fc-neutral-bg-color: #ffffff;
-  /* -- fullcalendar Color Overriding -- END */
+	--color-hard: #7758FA;
+	--background-color: #7880B2;
+	--internal-color: #7BC6C1;
+	--defulat-font:'Gamja Flower', sans-serif;
 }
 
+
 ::-webkit-scrollbar {
-  right: 0;
-  width: 6px;
+	right: 0;
+	width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: transparent;
-  border-radius: 10px;
+	background: transparent;
+	border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 10px;
-  right: 0;
+	background: transparent;
+	border-radius: 10px;
+	right: 0;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-hard);
-  border-radius: 10px;
-  opacity: 0.5;
+	background: var(--color-hard);
+	border-radius: 10px;
+	opacity: 0.5;
 }
 
 .wrapper {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 /* 몇몇 px 이였는지 기억이... */
-@media (max-width: 1280px) {
-}
+@media (max-width: 1280px) {}

@@ -1,5 +1,5 @@
 import style from "./DiaryPage.module.css";
-import Note from "../../Note";
+import Note from "../../layouts/Note";
 import "../../layouts/Default.css";
 import diaryImage from "../../images/DiaryImage.jpg";
 
