@@ -14,3 +14,37 @@ body {
   height: 80%;
   margin-bottom: 300px;
 }
+
+.note-header{
+  position: absolute;
+  top:20%;
+  left:27%;
+  font-size:40px;
+}
+
+.note-calendar{
+  position: absolute;
+  top:30%;
+  left:60%;
+}
+
+.note-weather{
+  position: absolute;
+  border: 1px solid black;
+  top: 30%;
+  left:33%;
+  font-size: 30px;
+  width: 250px;
+  height: 200px;
+  text-align: center;
+}
+.note-todoList{
+  position: absolute;
+  border: 1px solid black;
+  top:60%;
+  left: 18%;
+  width: 535px;
+  text-align: center;
+  height: 230px;
+  font-size: 30px;
+}
