@@ -8,11 +8,7 @@ function SignUp() {
         <>
 
             <Note>
-                <div style={style.mainContainer}>
-                    <div style={style.memberDetails}>
-                        안녕
-                    </div>
-                </div>
+                
             </Note>
 
 
