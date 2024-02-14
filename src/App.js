@@ -8,6 +8,7 @@ import Layout from "./layouts/Layout";
 import DiaryPage from "./pages/diary/DiaryPage";
 import Note from "./layouts/Note";
 import SignUp from "./pages/account/signUp/SignUp";
+import MainPage from "./pages/mainPage/MainPage";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <Route path="/note" element={<Note />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/diarypage" element={<DiaryPage />} />
-
+          <Route path="/mainpage" element={<MainPage />} />
 
         </Route>
 

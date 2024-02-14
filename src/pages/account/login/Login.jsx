@@ -27,7 +27,7 @@ function Login() {
 
                         <button className={style.signUpButton} onClick={() => navigate("/signUp")}>회원가입   </button>
 
-                        <button className={style.loginButton}>로그인</button>
+                        <button className={style.loginButton} onClick={() => navigate("/mainpage")}>로그인</button>
                     </div>
 
 
