@@ -9,16 +9,12 @@ function Login() {
     <>
       <div className={style.mainContainer}>
         <div className={style.loginForm}>
-            <div className={style.imageContainer}>
-                
-                <img src={loginImg} alt="이미지 없음" />
-                <input type="text" className={style.textAboveImage}></input>
-
-            </div>
+          <div className={style.imageContainer}>
+            <img src={loginImg} alt="이미지 없음" />
+            <input type="text" className={style.textAboveImage}></input>
+          </div>
         </div>
-        
-    </div>
-
+      </div>
     </>
   );
 }
