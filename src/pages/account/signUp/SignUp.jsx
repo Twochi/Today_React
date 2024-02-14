@@ -8,7 +8,9 @@ function SignUp() {
         <>
 
             <Note>
-                
+                <div className={style.mainContainer}>
+                    <div className={style.memberDetails}>하잉</div>
+                </div>
             </Note>
 
 
