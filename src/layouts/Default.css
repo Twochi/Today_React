@@ -9,7 +9,7 @@ body {
 }
 
 html {
-	font-family: 'Apple SD Gothic Neo', Roboto, 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;
+	font-family: var(--defulat-font);
 	line-height: 1.2;
 	word-wrap: break-word;
 }
@@ -178,7 +178,7 @@ main {
 
 /* 색상 기본 */
 :root {
-	--color-hard: #7758FA;
+	
 	--background-color: #7880B2;
 	--internal-color: #7BC6C1;
 	--defulat-font:'Gamja Flower', sans-serif;

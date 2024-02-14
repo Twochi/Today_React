@@ -9,14 +9,15 @@ function SignUp() {
         <>
         <div className={style.mainContainer}>
 
-            <Note className={style.note}>
+            <Note>
                 
             </Note>
 
-            
-                <div className={style.memberDetails}>회원가입</div>
+            <div className={style.signUpTitle}>회원가입</div>
 
-                <div className={style.image}>캐릭터 번경</div>
+            <div className={style.memberInfo}>
+                <div>이름</div>
+            </div>
 
 
         </div>

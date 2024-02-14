@@ -7,16 +7,25 @@
     position: absolute;
     top: 0%;
     left: 0%;
-    color: aqua;
+    
 }
 
 .note{
 
     position: relative;
 }
-.image{
 
+.signUpTitle{
     position: absolute;
-    top: 0%;
-    left: 0%;
+    top: 7%;
+    left: 27%;
+    font-family: var(--defulat-font);
+    font-size: 50px;
+}
+
+.memberInfo{
+    position: absolute;
+    padding: 20px;
+    top: 20%;
+    left: 50%;
 }

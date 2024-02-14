@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom/dist";
 
 function Login() {
 
-    console.log("ㅎㅇㅎㅇ");
 
     const navigate = useNavigate();
 
