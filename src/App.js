@@ -23,6 +23,7 @@ function App() {
           <Route path="/note" element={<Note />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/diarypage" element={<DiaryPage />} />
+          
 
 
         </Route>
