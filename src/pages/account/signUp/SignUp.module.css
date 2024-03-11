@@ -1,4 +1,8 @@
 
+html{
+    font-size: 22px;
+}
+
 .mainContainer{
     position: relative;
 }
@@ -7,16 +11,188 @@
     position: absolute;
     top: 0%;
     left: 0%;
-    color: aqua;
+    
 }
 
 .note{
 
     position: relative;
 }
-.image{
 
+.signUpTitle{
     position: absolute;
-    top: 0%;
-    left: 0%;
+    top: 3%;
+    left: 27%;
+    font-family: var(--defulat-font);
+    font-size: 50px;
+    font-weight: 600;
 }
+
+.memberInfo{
+    position: absolute;
+    padding: 20px;
+    top: 14%;
+    left: 17%;
+    display: flex;
+    gap: 30px;
+    width: 35%;
+    flex-wrap: wrap;
+    
+    
+}
+
+.memberName{
+    border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
+    border-radius: 5px;
+    margin-left: 10px;
+    width: 100px;
+    
+}
+
+
+
+.memberAge{
+    flex-basis: 10%; /* 변경된 부분: 요소의 기본 크기를 조정 */
+    border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
+    border-radius: 5px;
+    width: 50px;
+}
+
+.memberEmail{
+    border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+
+.memberId{
+
+    border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.iDuplcationButton{
+    margin-left: 10px;
+    font-family: var(--defulat-font);
+    color: white;
+    background-color: var(--background-color);
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.memberPwd{
+
+    border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.memberPhone{
+
+    border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
+    border-radius: 5px;
+    margin-left: 10px;
+    
+    
+    
+    
+
+}
+
+.checkButton{
+    font-family: var(--defulat-font);
+    color: white;
+    background-color: var(--background-color);
+    padding: 6px;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.authentication{
+    border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.memberImg{
+    position: absolute;
+    top: 2%;
+    left: 58%;
+    padding: 20px;
+    color: transparent;
+    display: flex;
+    width: 21%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.previewImage{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    display: flex;
+    
+    
+    
+}
+
+.imgInput{
+
+    display: none;
+    color: transparent;
+    
+    
+
+}
+
+.memberImgBefore{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.selectButton{
+    
+    font-family: var(--defulat-font);
+    color: white;
+    background-color: var(--background-color);
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.downArrowImg{
+    width: 30%;
+    height: 50%;
+    margin-bottom: 20px;
+}
+
+.successButton{
+
+    font-family: var(--defulat-font);
+    color: white;
+    background-color: var(--background-color);
+    padding: 6px;
+    border-radius: 10px;
+    position: absolute;
+    width: 50px;
+    top: 61%;
+    left: 79%;
+}
+
+.changeImgTitle{
+    color: black;
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    
+}
+
+
+
+
+
