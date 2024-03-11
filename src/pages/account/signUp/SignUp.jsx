@@ -1,12 +1,13 @@
 // SignUp.js
 
 import React, { useState, useRef } from 'react';
+import { UseDispatch, useDispatch } from 'react-redux';
 import "../../../layouts/Default.css";
 import Note from "../../../layouts/Note";
 import style from "./SignUp.module.css"
-import images from "../../../images/logo.png"
 import baseImg from "../../../images/baseImg.jpg"
 import downArrow from "../../../images/downArrowImg.png"
+import { callEmailAuthAPI } from '../../../apis/MemberApiCalls';
 
 
 function SignUp() {
@@ -14,10 +15,24 @@ function SignUp() {
     const [customEmail, setCustomEmail] = useState('');
     const [selectedOption, setSelectedOption] = useState('');
     const [imagePreview, setImagePreview] = useState(''); // 추가된 부분
+    const [changeImg , setChangeImg] = useState('');
     const selectFile = useRef("");
+    const [frontEmail, setFrontEmail] = useState('');
+    const dispatch = useDispatch();
+    
+
+
+
+    const openFileInput = () => {
+        selectFile.current.click();
+    };
+
+    
 
     const handleSelectChange = (event) => {
         setSelectedOption(event.target.value);
+
+        
         // "직접 입력"이 선택되면 customEmail 값을 초기화
         if (event.target.value === "직접 입력") {
             setCustomEmail('');
@@ -26,9 +41,18 @@ function SignUp() {
 
     const handleCustomEmailChange = (event) => {
         setCustomEmail(event.target.value);
+
+        
+        
     };
 
+    
+
     const handleImageChange = (event) => {
+
+        console.log(event.target.files[0]);
+        
+
         const file = event.target.files[0];
 
         // 이미지 미리보기를 위한 작업
@@ -42,6 +66,36 @@ function SignUp() {
             setImagePreview(null);
         }
     };
+
+    const handlerEmailChange = (e) => {
+
+        setFrontEmail(e.target.value)
+
+    }
+
+    const onClickAuthEmailHandler = () => {
+
+        let email = "";
+
+        if(selectedOption === '직접 입력') {
+            
+
+            email = frontEmail + '@' + customEmail 
+        }else{
+
+            email = frontEmail + '@' + selectedOption 
+        }
+
+        
+
+        dispatch(callEmailAuthAPI({
+
+            memberEmail : email
+        }))
+
+
+        
+    }
 
     
 
@@ -71,10 +125,43 @@ function SignUp() {
                         나이 : <input type="text" className={style.memberAge} />
                     </div>
 
+                    <div className='wrapper'>
+                        <div>
+                            전화번호 : <input type="text" className={style.memberPhone}/>
+                            
+                            
+                        
+                        </div>
+
+                        <div style={{color: "gray" , fontSize: "15px"}}> - 없이 입력해 주세요.</div>
+
+                        
+                    </div>
+
+                    
+
+                    <div className={style.IdContainer}>
+                        아이디 : <input type="text" className={style.memberId}/>
+                        <button className={style.iDuplcationButton}>중복확인</button>
+                    </div>
+
+
+                    <div className='wrapper'>
+                        비밀 번호 : <input type="password" className={style.memberPwd}/>
+                    </div>
+                    <div className='wrapper'>
+                        비밀 번호 확인 : <input type="password" className={style.memberPwd}/>
+                    </div>
+                    <div style={{color:"gray" , fontSize:"15px"}} className='wrapper'>
+                        비밀 번호 입력시 특수문자 !@#$%^&* 하나 이상이 포함되어야 합니다.
+                    </div>
+                    
+                    
+
                     <div >
                         이메일 : 
 
-                        <input type="text" className={style.memberEmail} />
+                        <input type="text" className={style.memberEmail} onChange={handlerEmailChange}/>
                         {selectedOption !== "직접 입력" && (
                             <>
                                 @
@@ -101,39 +188,12 @@ function SignUp() {
                                 />
                             </>
                         )}
-                    </div>
 
-                    <div className={style.IdContainer}>
-                        아이디 : <input type="text" className={style.memberId}/>
-                        <button className={style.iDuplcationButton}>중복확인</button>
-                    </div>
-
-
-                    <div className='wrapper'>
-                        비밀 번호 : <input type="password" className={style.memberPwd}/>
-                    </div>
-                    <div className='wrapper'>
-                        비밀 번호 확인 : <input type="password" className={style.memberPwd}/>
-                    </div>
-                    <div style={{color:"gray" , fontSize:"15px"}} className='wrapper'>
-                        비밀 번호 입력시 특수문자 !@#$%^&* 하나 이상이 포함되어야 합니다.
-                    </div>
-                    
-                    <div className='wrapper'>
-                        <div>
-                            전화번호 : <input type="text" className={style.memberPhone}/>
-                            
-                            <button className={style.checkButton}>인증번호 발송</button>
-                        
-                        </div>
-
-                        <div style={{color: "gray" , fontSize: "15px"}}> - 없이 입력해 주세요.</div>
-
-                        
+                        <button className={style.checkButton} onClick={onClickAuthEmailHandler}>인증번호 발송</button>
                     </div>
 
                     <div>
-                        카카오톡 알림 인증번호 : <input type="text" className={style.authentication}/>
+                        이메일 인증번호 : <input type="text" className={style.authentication}/>
 
                         <button className={style.checkButton}>확인하기</button>
                     </div>
@@ -149,20 +209,32 @@ function SignUp() {
                         </div>
 
                         <div className={style.memberImgBefore}>
-                            <input type="file" onChange={handleImageChange} className={style.imgInput} ref={selectFile}/>
-                            
-                            <img src={imagePreview || baseImg} alt={baseImg} className={style.previewImage} />
-                            
-                            <button onclick={() => selectFile.current.onclick()} className={style.selectButton}>이미지 변환</button>
+                            <input
+                                type="file"
+                                onChange={handleImageChange}
+                                className={style.imgInput}
+                                ref={selectFile}
+                                accept=".jpg, .jpeg, .png"
+                            />
 
-                            <img src={downArrow} alt="" className={style.downArrowImg} />
-                            
-                        </div>
+                            <img
+                                src={imagePreview || baseImg}
+                                alt={baseImg}
+                                className={style.previewImage}
+                                onClick={openFileInput} 
+                            />
 
+                        <button  className={style.selectButton}>
+                            이미지 변환
+                        </button>
+
+                        <img src={downArrow} alt="" className={style.downArrowImg} />
+                        
+                </div>
 
                         <div className={style.memberImgAfter}>
 
-                            <img src={imagePreview || baseImg} alt={baseImg} className={style.previewImage} />
+                            <img src={changeImg || baseImg} alt={baseImg} className={style.previewImage} />
 
                         </div>
 
