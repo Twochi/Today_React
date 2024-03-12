@@ -1,15 +1,23 @@
-.dairyPage {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  z-index: 100;
+.mainContainer {
+  position: relative;
 }
 
-.diaryBase {
-  position: relative; /* Note 컴포넌트의 z-index 설정을 고려하여 position을 relative로 설정합니다 */
-  z-index: 10000; /* Note 컴포넌트보다 위에 쌓이도록 설정합니다 */
-  max-width: 50%;
-  max-height: 50%;
+.diaryImage {
+  position: absolute;
+  top: 2%;
+  left: 17%;
+  z-index: 1;
+  size: 20px;
+  width: 670px;
+  height: 730px;
+}
+.diaryImage2 {
+  position: absolute;
+  top: -1%;
+  left: 54%;
+  bottom: 70%;
+  z-index: 1;
+  size: 20px;
+  width: 670px;
+  height: 760px;
 }
