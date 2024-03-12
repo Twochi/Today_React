@@ -9,6 +9,7 @@ import baseImg from "../../../images/baseImg.jpg"
 import downArrow from "../../../images/downArrowImg.png"
 import { callEmailAuthAPI ,callAuthNumCheckAPI} from '../../../apis/MemberApiCalls';
 import { set } from 'lodash';
+import { useSelector } from 'react-redux';
 
 
 function SignUp() {
@@ -21,6 +22,11 @@ function SignUp() {
     const [frontEmail, setFrontEmail] = useState('');
     const dispatch = useDispatch();
     const [authNum , setAuthNum] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState(''); // 새로운 state 추가
+    
+
+    const checkAuthNum = useSelector(state => state.memberReducer?.postCheckAuthNum)
     
 
 
@@ -99,23 +105,65 @@ function SignUp() {
 
     const onClickAuthNumHandler = () => {
 
-        console.log(authNum);
+        let email = "";
+
+        if(selectedOption === '직접 입력') {
+            
+
+            email = frontEmail + '@' + customEmail 
+        }else{
+
+            email = frontEmail + '@' + selectedOption 
+        }
 
         dispatch(callAuthNumCheckAPI({
 
             authNum : authNum,
+            email  : email,
             
         }))
 
+    console.log(checkAuthNum.data);
+    
+    }
 
-
-        
+    const onChangePasswordHandler = (e) => {
+        setPassword(e.target.value)
     }
 
     const onChangeAuthNumHandler = (e) => {
 
         setAuthNum(e.target.value)
     }
+
+
+    const handleConfirmPasswordChange = (e) => {
+
+
+        const newConfirmPassword = e.target.value;
+        setConfirmPassword(newConfirmPassword);
+
+    }
+
+    const checkPasswordMatch = () => {
+        // 비밀번호와 확인 비밀번호가 같은지 확인
+        const passwordsMatch = password === confirmPassword;
+
+        // 비밀번호와 확인 비밀번호가 일치하면서 특수문자가 포함되어 있는지 확인
+        const containsSpecialChar = /[!@#$%^&*]/.test(password);
+
+        if (password === '') {
+            return "비밀번호를 입력해주세요.";
+        }
+
+        if (!passwordsMatch) {
+            return "비밀번호가 일치하지 않습니다.";
+        } else if (!containsSpecialChar) {
+            return "비밀번호에 특수문자가 하나 이상 포함되어야 합니다.";
+        } else {
+            return "사용가능한 비밀번호 입니다.";
+        }
+    };
 
     
 
@@ -167,10 +215,19 @@ function SignUp() {
 
 
                     <div className='wrapper'>
-                        비밀 번호 : <input type="password" className={style.memberPwd}/>
+                        
+                        비밀 번호 : <input type="password" className={style.memberPwd} onChange={onChangePasswordHandler} />
+                        
+                        
                     </div>
+                    
                     <div className='wrapper'>
-                        비밀 번호 확인 : <input type="password" className={style.memberPwd}/>
+                        <div style={{display : "flex", alignItems : "center"}}>
+                            비밀 번호 확인 : <input type="password" className={style.memberPwd} onChange={handleConfirmPasswordChange} />
+                            <p className={style.checkPwd}>
+                            {checkPasswordMatch()}
+                        </p>
+                        </div>
                     </div>
                     <div style={{color:"gray" , fontSize:"15px"}} className='wrapper'>
                         비밀 번호 입력시 특수문자 !@#$%^&* 하나 이상이 포함되어야 합니다.

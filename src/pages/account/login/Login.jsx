@@ -2,6 +2,8 @@ import style from "./Login.module.css";
 import "../../../layouts/Default.css";
 import loginImg from "./images/loginImg.png";
 import { useNavigate } from "react-router-dom/dist";
+import { UseSelector, useSelector } from "react-redux";
+import memberReducer from "../../../modules/MemberModule";
 
 
 
@@ -9,6 +11,11 @@ function Login() {
 
 
     const navigate = useNavigate();
+
+    const checkAuthNum = useSelector(state => state.memberReducer.checkAuthNum)
+
+
+    
 
 
 
