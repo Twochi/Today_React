@@ -7,7 +7,8 @@ import Note from "../../../layouts/Note";
 import style from "./SignUp.module.css"
 import baseImg from "../../../images/baseImg.jpg"
 import downArrow from "../../../images/downArrowImg.png"
-import { callEmailAuthAPI } from '../../../apis/MemberApiCalls';
+import { callEmailAuthAPI ,callAuthNumCheckAPI} from '../../../apis/MemberApiCalls';
+import { set } from 'lodash';
 
 
 function SignUp() {
@@ -19,6 +20,7 @@ function SignUp() {
     const selectFile = useRef("");
     const [frontEmail, setFrontEmail] = useState('');
     const dispatch = useDispatch();
+    const [authNum , setAuthNum] = useState('');
     
 
 
@@ -86,15 +88,33 @@ function SignUp() {
             email = frontEmail + '@' + selectedOption 
         }
 
-        
+        alert("인증번호 전송 완료")
 
         dispatch(callEmailAuthAPI({
 
             memberEmail : email
         }))
+        
+    }
+
+    const onClickAuthNumHandler = () => {
+
+        console.log(authNum);
+
+        dispatch(callAuthNumCheckAPI({
+
+            authNum : authNum,
+            
+        }))
+
 
 
         
+    }
+
+    const onChangeAuthNumHandler = (e) => {
+
+        setAuthNum(e.target.value)
     }
 
     
@@ -193,9 +213,9 @@ function SignUp() {
                     </div>
 
                     <div>
-                        이메일 인증번호 : <input type="text" className={style.authentication}/>
+                        이메일 인증번호 : <input type="text" className={style.authentication} onChange={onChangeAuthNumHandler}/>
 
-                        <button className={style.checkButton}>확인하기</button>
+                        <button className={style.checkButton} onClick={onClickAuthNumHandler}> 확인하기</button>
                     </div>
                 </div>
 
