@@ -47,9 +47,6 @@ export const callEmailAuthAPI = ( memberEmail ) => {
 export const callAuthNumCheckAPI = ( authNum ) => {
 
     const requestURL = `${SPRING_PRE_URL}/authNumCheck`;
-
-    console.log('"안뇽' , authNum);
-
     
     return async (dispatch, getState) => {
 
@@ -62,6 +59,37 @@ export const callAuthNumCheckAPI = ( authNum ) => {
             },
 
             body: JSON.stringify(authNum)
+        })
+            .then(response => response.json());
+
+        if(result.data == true) {
+            alert("인증이 완료되었습니다.")
+        }else {
+            alert("인증번호를 다시 입력해주세요.")
+        }
+
+        console.log('[MemberAPICalls] callGetMemberAPI RESULT : ', result);
+
+        dispatch({ type: POST_CHECKAUTHNUM, payload: result });
+
+    };
+}
+
+
+export const callSuccessSignUpAPI = ( {form} ) => {
+
+    const requestURL = `${SPRING_PRE_URL}/signUp`;
+
+    console.log('"안뇽' , form);
+
+    return async (dispatch, getState) => {
+
+        
+        const result = await fetch(requestURL, {
+            method: "post",
+            
+
+            body: form
         })
             .then(response => response.json());
 

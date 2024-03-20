@@ -7,7 +7,7 @@ import Note from "../../../layouts/Note";
 import style from "./SignUp.module.css"
 import baseImg from "../../../images/baseImg.jpg"
 import downArrow from "../../../images/downArrowImg.png"
-import { callEmailAuthAPI ,callAuthNumCheckAPI} from '../../../apis/MemberApiCalls';
+import { callEmailAuthAPI ,callAuthNumCheckAPI , callSuccessSignUpAPI} from '../../../apis/MemberApiCalls';
 import { set } from 'lodash';
 import { useSelector } from 'react-redux';
 
@@ -24,13 +24,15 @@ function SignUp() {
     const [authNum , setAuthNum] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState(''); // 새로운 state 추가
+    const [memberId, setMemberId] = useState("");
+    const [memberAge , setMemberAge] = useState("");
+    const [memberPhone, setMemberPhone] = useState("");
+    const [memberName, setMemberName] = useState("");
+    const [memberImg , setMemberImg] = useState("");
     
 
     const checkAuthNum = useSelector(state => state.memberReducer?.postCheckAuthNum)
     
-
-
-
     const openFileInput = () => {
         selectFile.current.click();
     };
@@ -59,14 +61,17 @@ function SignUp() {
     const handleImageChange = (event) => {
 
         console.log(event.target.files[0]);
+
+        setMemberImg(event.target.files[0]);
         
 
-        const file = event.target.files[0];
+        const file = (event.target.files[0])
 
         // 이미지 미리보기를 위한 작업
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
+                
                 setImagePreview(reader.result);
             };
             reader.readAsDataURL(file);
@@ -122,10 +127,11 @@ function SignUp() {
             email  : email,
             
         }))
-
-    console.log(checkAuthNum.data);
     
     }
+
+    
+    
 
     const onChangePasswordHandler = (e) => {
         setPassword(e.target.value)
@@ -153,7 +159,7 @@ function SignUp() {
         const containsSpecialChar = /[!@#$%^&*]/.test(password);
 
         if (password === '') {
-            return "비밀번호를 입력해주세요.";
+            return " ";
         }
 
         if (!passwordsMatch) {
@@ -165,6 +171,57 @@ function SignUp() {
         }
     };
 
+    const onChangeIdHandler = (e) => {
+
+        setMemberId(e.target.value)
+        
+    }
+
+    const onChangeAgeHandler = (e) => {
+
+        setMemberAge(e.target.value)
+
+    }
+
+    const onChangePhoneHandler = (e) => {
+
+        setMemberPhone(e.target.value)
+
+    }
+
+    const onChangeNameHandler = (e) => {
+
+        setMemberName(e.target.value)
+
+        
+        
+    }
+
+    const onClickSuccessHandler = () => {
+
+        
+        const formData = new FormData();
+
+        formData.append("memberName" , memberName);
+        formData.append("gender" , gender);
+        formData.append("memberAge" , memberAge);
+        formData.append("phoneNumber" , memberPhone);
+        formData.append("memberId" , memberId);
+        formData.append("memberPwd", confirmPassword);
+        formData.append("memberEmail" , frontEmail);
+        formData.append("memberPhoto" , memberImg);
+
+        for (let key of formData.keys()) {
+            console.log(key, ":", formData.get(key));
+        }
+
+        dispatch(callSuccessSignUpAPI({
+
+            form : formData
+
+        }))
+
+    }
     
 
     return (
@@ -176,7 +233,7 @@ function SignUp() {
                 <div className={style.memberInfo}>
 
                     <div>
-                        이름 : <input type="text" className={style.memberName} />
+                        이름 : <input type="text" className={style.memberName} onChange={onChangeNameHandler} />
                     </div>
 
                     <div className={style.memberGender}>
@@ -190,13 +247,13 @@ function SignUp() {
                     </div>
 
                     <div>
-                        나이 : <input type="text" className={style.memberAge} />
+                        나이 : <input type="text" className={style.memberAge} onChange={onChangeAgeHandler} />
                     </div>
 
                     <div className='wrapper'>
                         <div>
-                            전화번호 : <input type="text" className={style.memberPhone}/>
-                            
+
+                            전화번호 : <input type="text" className={style.memberPhone} onChange={onChangePhoneHandler} />
                             
                         
                         </div>
@@ -206,10 +263,9 @@ function SignUp() {
                         
                     </div>
 
-                    
 
                     <div className={style.IdContainer}>
-                        아이디 : <input type="text" className={style.memberId}/>
+                        아이디 : <input type="text" className={style.memberId} onChange={onChangeIdHandler}/>
                         <button className={style.iDuplcationButton}>중복확인</button>
                     </div>
 
@@ -319,7 +375,7 @@ function SignUp() {
 
                 <div className={style.successButtonContainer}>
 
-                    <button className={style.successButton}>완료</button>
+                    <button className={style.successButton} onClick={onClickSuccessHandler}>완료</button>
                 </div>
                 
             </div>
