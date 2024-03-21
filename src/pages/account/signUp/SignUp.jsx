@@ -7,7 +7,7 @@ import Note from "../../../layouts/Note";
 import style from "./SignUp.module.css"
 import baseImg from "../../../images/baseImg.jpg"
 import downArrow from "../../../images/downArrowImg.png"
-import { callEmailAuthAPI ,callAuthNumCheckAPI , callSuccessSignUpAPI} from '../../../apis/MemberApiCalls';
+import { callEmailAuthAPI, callAuthNumCheckAPI, callSuccessSignUpAPI } from '../../../apis/MemberApiCalls';
 import { set } from 'lodash';
 import { useSelector } from 'react-redux';
 
@@ -17,32 +17,32 @@ function SignUp() {
     const [customEmail, setCustomEmail] = useState('');
     const [selectedOption, setSelectedOption] = useState('');
     const [imagePreview, setImagePreview] = useState(''); // 추가된 부분
-    const [changeImg , setChangeImg] = useState('');
+    const [changeImg, setChangeImg] = useState('');
     const selectFile = useRef("");
     const [frontEmail, setFrontEmail] = useState('');
     const dispatch = useDispatch();
-    const [authNum , setAuthNum] = useState('');
+    const [authNum, setAuthNum] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState(''); // 새로운 state 추가
     const [memberId, setMemberId] = useState("");
-    const [memberAge , setMemberAge] = useState("");
+    const [memberAge, setMemberAge] = useState("");
     const [memberPhone, setMemberPhone] = useState("");
     const [memberName, setMemberName] = useState("");
-    const [memberImg , setMemberImg] = useState("");
-    
+    const [memberImg, setMemberImg] = useState("");
+
 
     const checkAuthNum = useSelector(state => state.memberReducer?.postCheckAuthNum)
-    
+
     const openFileInput = () => {
         selectFile.current.click();
     };
 
-    
+
 
     const handleSelectChange = (event) => {
         setSelectedOption(event.target.value);
 
-        
+
         // "직접 입력"이 선택되면 customEmail 값을 초기화
         if (event.target.value === "직접 입력") {
             setCustomEmail('');
@@ -52,18 +52,18 @@ function SignUp() {
     const handleCustomEmailChange = (event) => {
         setCustomEmail(event.target.value);
 
-        
-        
+
+
     };
 
-    
+
 
     const handleImageChange = (event) => {
 
         console.log(event.target.files[0]);
 
         setMemberImg(event.target.files[0]);
-        
+
 
         const file = (event.target.files[0])
 
@@ -71,7 +71,7 @@ function SignUp() {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                
+
                 setImagePreview(reader.result);
             };
             reader.readAsDataURL(file);
@@ -90,48 +90,48 @@ function SignUp() {
 
         let email = "";
 
-        if(selectedOption === '직접 입력') {
-            
+        if (selectedOption === '직접 입력') {
 
-            email = frontEmail + '@' + customEmail 
-        }else{
 
-            email = frontEmail + '@' + selectedOption 
+            email = frontEmail + '@' + customEmail
+        } else {
+
+            email = frontEmail + '@' + selectedOption
         }
 
         alert("인증번호 전송 완료")
 
         dispatch(callEmailAuthAPI({
 
-            memberEmail : email
+            memberEmail: email
         }))
-        
+
     }
 
     const onClickAuthNumHandler = () => {
 
         let email = "";
 
-        if(selectedOption === '직접 입력') {
-            
+        if (selectedOption === '직접 입력') {
 
-            email = frontEmail + '@' + customEmail 
-        }else{
 
-            email = frontEmail + '@' + selectedOption 
+            email = frontEmail + '@' + customEmail
+        } else {
+
+            email = frontEmail + '@' + selectedOption
         }
 
         dispatch(callAuthNumCheckAPI({
 
-            authNum : authNum,
-            email  : email,
-            
+            authNum: authNum,
+            email: email,
+
         }))
-    
+
     }
 
-    
-    
+
+
 
     const onChangePasswordHandler = (e) => {
         setPassword(e.target.value)
@@ -174,7 +174,7 @@ function SignUp() {
     const onChangeIdHandler = (e) => {
 
         setMemberId(e.target.value)
-        
+
     }
 
     const onChangeAgeHandler = (e) => {
@@ -193,23 +193,23 @@ function SignUp() {
 
         setMemberName(e.target.value)
 
-        
-        
+
+
     }
 
     const onClickSuccessHandler = () => {
 
-        
+
         const formData = new FormData();
 
-        formData.append("memberName" , memberName);
-        formData.append("gender" , gender);
-        formData.append("memberAge" , memberAge);
-        formData.append("phoneNumber" , memberPhone);
-        formData.append("memberId" , memberId);
+        formData.append("memberName", memberName);
+        formData.append("gender", gender);
+        formData.append("memberAge", memberAge);
+        formData.append("phoneNumber", memberPhone);
+        formData.append("memberId", memberId);
         formData.append("memberPwd", confirmPassword);
-        formData.append("memberEmail" , frontEmail);
-        formData.append("memberPhoto" , memberImg);
+        formData.append("memberEmail", frontEmail);
+        formData.append("memberPhoto", memberImg);
 
         for (let key of formData.keys()) {
             console.log(key, ":", formData.get(key));
@@ -217,12 +217,12 @@ function SignUp() {
 
         dispatch(callSuccessSignUpAPI({
 
-            form : formData
+            form: formData
 
         }))
 
     }
-    
+
 
     return (
         <>
@@ -238,11 +238,11 @@ function SignUp() {
 
                     <div className={style.memberGender}>
                         성별 :
-                        <label style={{marginLeft: "10px"}}>
-                            남 <input type="radio" value="male" checked={gender === 'female'} onChange={() => setGender('female')} />
+                        <label style={{ marginLeft: "10px" }}>
+                            남 <input type="radio" value="male" checked={gender === 'male'} onChange={() => setGender('male')} />
                         </label>
                         <label>
-                            여 <input type="radio" value="female" checked={gender === 'male'} onChange={() => setGender('male')} />
+                            여 <input type="radio" value="female" checked={gender === 'female'} onChange={() => setGender('female')} />
                         </label>
                     </div>
 
@@ -254,51 +254,51 @@ function SignUp() {
                         <div>
 
                             전화번호 : <input type="text" className={style.memberPhone} onChange={onChangePhoneHandler} />
-                            
-                        
+
+
                         </div>
 
-                        <div style={{color: "gray" , fontSize: "15px"}}> - 없이 입력해 주세요.</div>
+                        <div style={{ color: "gray", fontSize: "15px" }}> - 없이 입력해 주세요.</div>
 
-                        
+
                     </div>
 
 
                     <div className={style.IdContainer}>
-                        아이디 : <input type="text" className={style.memberId} onChange={onChangeIdHandler}/>
+                        아이디 : <input type="text" className={style.memberId} onChange={onChangeIdHandler} />
                         <button className={style.iDuplcationButton}>중복확인</button>
                     </div>
 
 
                     <div className='wrapper'>
-                        
+
                         비밀 번호 : <input type="password" className={style.memberPwd} onChange={onChangePasswordHandler} />
-                        
-                        
+
+
                     </div>
-                    
+
                     <div className='wrapper'>
-                        <div style={{display : "flex", alignItems : "center"}}>
+                        <div style={{ display: "flex", alignItems: "center" }}>
                             비밀 번호 확인 : <input type="password" className={style.memberPwd} onChange={handleConfirmPasswordChange} />
                             <p className={style.checkPwd}>
-                            {checkPasswordMatch()}
-                        </p>
+                                {checkPasswordMatch()}
+                            </p>
                         </div>
                     </div>
-                    <div style={{color:"gray" , fontSize:"15px"}} className='wrapper'>
+                    <div style={{ color: "gray", fontSize: "15px" }} className='wrapper'>
                         비밀 번호 입력시 특수문자 !@#$%^&* 하나 이상이 포함되어야 합니다.
                     </div>
-                    
-                    
+
+
 
                     <div >
-                        이메일 : 
+                        이메일 :
 
-                        <input type="text" className={style.memberEmail} onChange={handlerEmailChange}/>
+                        <input type="text" className={style.memberEmail} onChange={handlerEmailChange} />
                         {selectedOption !== "직접 입력" && (
                             <>
                                 @
-                                <select value={selectedOption} onChange={handleSelectChange}  className={style.memberEmail}>
+                                <select value={selectedOption} onChange={handleSelectChange} className={style.memberEmail}>
                                     <option value="" disabled>이메일을 선택해주세요.</option>
                                     <option value="gmail.com">gmail.com</option>
                                     <option value="naver.com">naver.com</option>
@@ -312,10 +312,10 @@ function SignUp() {
                         {selectedOption === "직접 입력" && (
                             <>
                                 @
-                                <input 
-                                    type="text" 
-                                    value={customEmail} 
-                                    onChange={handleCustomEmailChange} 
+                                <input
+                                    type="text"
+                                    value={customEmail}
+                                    onChange={handleCustomEmailChange}
                                     placeholder="직접 입력"
                                     className={style.memberEmail}
                                 />
@@ -326,7 +326,7 @@ function SignUp() {
                     </div>
 
                     <div>
-                        이메일 인증번호 : <input type="text" className={style.authentication} onChange={onChangeAuthNumHandler}/>
+                        이메일 인증번호 : <input type="text" className={style.authentication} onChange={onChangeAuthNumHandler} />
 
                         <button className={style.checkButton} onClick={onClickAuthNumHandler}> 확인하기</button>
                     </div>
@@ -335,41 +335,41 @@ function SignUp() {
 
                 <div className={style.memberImg}>
 
-                        <div>
-                            
-                            <div className={style.changeImgTitle}>이미지 변환하기</div>
+                    <div>
 
-                        </div>
+                        <div className={style.changeImgTitle}>이미지 변환하기</div>
 
-                        <div className={style.memberImgBefore}>
-                            <input
-                                type="file"
-                                onChange={handleImageChange}
-                                className={style.imgInput}
-                                ref={selectFile}
-                                accept=".jpg, .jpeg, .png"
-                            />
+                    </div>
 
-                            <img
-                                src={imagePreview || baseImg}
-                                alt={baseImg}
-                                className={style.previewImage}
-                                onClick={openFileInput} 
-                            />
+                    <div className={style.memberImgBefore}>
+                        <input
+                            type="file"
+                            onChange={handleImageChange}
+                            className={style.imgInput}
+                            ref={selectFile}
+                            accept=".jpg, .jpeg, .png"
+                        />
 
-                        <button  className={style.selectButton}>
+                        <img
+                            src={imagePreview || baseImg}
+                            alt={baseImg}
+                            className={style.previewImage}
+                            onClick={openFileInput}
+                        />
+
+                        <button className={style.selectButton}>
                             이미지 변환
                         </button>
 
                         <img src={downArrow} alt="" className={style.downArrowImg} />
-                        
-                </div>
 
-                        <div className={style.memberImgAfter}>
+                    </div>
 
-                            <img src={changeImg || baseImg} alt={baseImg} className={style.previewImage} />
+                    <div className={style.memberImgAfter}>
 
-                        </div>
+                        <img src={changeImg || baseImg} alt={baseImg} className={style.previewImage} />
+
+                    </div>
 
                 </div>
 
@@ -377,7 +377,7 @@ function SignUp() {
 
                     <button className={style.successButton} onClick={onClickSuccessHandler}>완료</button>
                 </div>
-                
+
             </div>
         </>
     )
