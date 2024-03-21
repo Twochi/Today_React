@@ -1,9 +1,8 @@
-
-html{
+html {
     font-size: 22px;
 }
 
-.mainContainer{
+.mainContainer {
     position: relative;
 }
 
@@ -11,69 +10,70 @@ html{
     position: absolute;
     top: 0%;
     left: 0%;
-    
+
 }
 
-.note{
+.note {
 
     position: relative;
 }
 
-.signUpTitle{
+.signUpTitle {
     position: absolute;
-    top: 3%;
+    top: -0%;
     left: 27%;
     font-family: var(--defulat-font);
     font-size: 50px;
     font-weight: 600;
 }
 
-.memberInfo{
+.memberInfo {
     position: absolute;
     padding: 20px;
-    top: 14%;
+    top: 9%;
     left: 17%;
     display: flex;
     gap: 30px;
     width: 35%;
     flex-wrap: wrap;
-    
-    
+
+
 }
 
-.memberName{
+.memberName {
     border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
     border-radius: 5px;
     margin-left: 10px;
     width: 100px;
-    
+
 }
 
 
 
-.memberAge{
-    flex-basis: 10%; /* 변경된 부분: 요소의 기본 크기를 조정 */
+.memberAge {
+    flex-basis: 10%;
+    /* 변경된 부분: 요소의 기본 크기를 조정 */
     border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
     border-radius: 5px;
     width: 50px;
 }
 
-.memberEmail{
+.memberEmail {
     border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
     border-radius: 5px;
     margin-left: 10px;
     margin-right: 10px;
-    
+
 }
 
-.memberId{
+.memberId {
 
     border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
     border-radius: 5px;
     margin-left: 10px;
 }
 
-.iDuplcationButton{
+.iDuplcationButton {
     margin-left: 10px;
     font-family: var(--defulat-font);
     color: white;
@@ -82,26 +82,26 @@ html{
     border-radius: 10px;
 }
 
-.memberPwd{
+.memberPwd {
 
     border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
     border-radius: 5px;
     margin-left: 10px;
 }
 
-.memberPhone{
+.memberPhone {
 
     border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
     border-radius: 5px;
     margin-left: 10px;
-    
-    
-    
-    
+
+
+
+
 
 }
 
-.checkButton{
+.checkButton {
     font-family: var(--defulat-font);
     color: white;
     background-color: var(--background-color);
@@ -110,15 +110,15 @@ html{
     margin-left: 10px;
 }
 
-.authentication{
+.authentication {
     border: 1px solid rgba(0.1, 0.1, 0.1, 0.1);
     border-radius: 5px;
     margin-left: 10px;
 }
 
-.memberImg{
+.memberImg {
     position: absolute;
-    top: 2%;
+    top: -2%;
     left: 58%;
     padding: 20px;
     color: transparent;
@@ -128,26 +128,26 @@ html{
     align-items: center;
 }
 
-.previewImage{
+.previewImage {
     width: 150px;
     height: 150px;
     border-radius: 100%;
     display: flex;
-    
-    
-    
+
+
+
 }
 
-.imgInput{
+.imgInput {
 
     display: none;
     color: transparent;
-    
-    
+
+
 
 }
 
-.memberImgBefore{
+.memberImgBefore {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -156,8 +156,8 @@ html{
     width: 100%;
 }
 
-.selectButton{
-    
+.selectButton {
+
     font-family: var(--defulat-font);
     color: white;
     background-color: var(--background-color);
@@ -165,13 +165,13 @@ html{
     border-radius: 10px;
 }
 
-.downArrowImg{
+.downArrowImg {
     width: 30%;
     height: 50%;
     margin-bottom: 20px;
 }
 
-.successButton{
+.successButton {
 
     font-family: var(--defulat-font);
     color: white;
@@ -184,22 +184,17 @@ html{
     left: 79%;
 }
 
-.changeImgTitle{
+.changeImgTitle {
     color: black;
     font-size: 50px;
     font-weight: 600;
     margin-bottom: 30px;
-    
+
 }
 
-.checkPwd{
+.checkPwd {
 
     font-size: 15px;
     margin-left: 30px;
     color: gray;
 }
-
-
-
-
-
